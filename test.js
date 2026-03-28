@@ -2,7 +2,7 @@ const puppeteer = require('puppeteer');
 
 (async () => {
   const browser = await puppeteer.launch({
-    executablePath: process.env.PUPPETEER_EXECUTABLE_PATH,
+    executablePath: '/usr/bin/chromium', // 🔥 FORÇA USAR O DO SISTEMA
     args: ['--no-sandbox', '--disable-setuid-sandbox']
   });
 
@@ -11,6 +11,5 @@ const puppeteer = require('puppeteer');
 
   console.log(await page.title());
 
-  // mantém o container vivo
   setInterval(() => {}, 1000);
 })();
