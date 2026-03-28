@@ -45,3 +45,21 @@ apt install putty-tools
 pscp -P 22 root@187.77.51.66:/root/puppeteer-app.zip C:\Users\aliss\Downloadspscp -P 22 root@187.77.51.66:/root/puppeteer-app.zip C:\Users\aliss\Downloads\
 pscp -P 22 root@187.77.51.66:/root/puppeteer-app.zip C:\Users\aliss\Downloads\
 ls -l
+git --version
+git init
+git add .
+git commit -m "primeiro commit"
+git branch -M main
+git remote add origin https://github.com/SEU_USUARIO/puppeteer-app.git
+git push -u origin main
+git remote add origin https://github.com/aeroalisson/puppeteer-app.git
+clear
+git remote add origin https://github.com/aeroalisson/puppeteer-app.git
+git remote set-url origin https://github.com/aeroalisson/puppeteer-app.git
+git remote add origin https://github.com/aeroalisson/puppeteer-app.git
+git branch
+git add .
+git commit -m "primeiro commit"
+git push -u origin main
+clear
+git push -u origin main
