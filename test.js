@@ -1,15 +1,33 @@
+const express = require('express');
 const puppeteer = require('puppeteer');
 
-(async () => {
-  const browser = await puppeteer.launch({
-    executablePath: '/usr/bin/chromium', // 🔥 FORÇA USAR O DO SISTEMA
-    args: ['--no-sandbox', '--disable-setuid-sandbox']
-  });
+const app = express();
 
-  const page = await browser.newPage();
-  await page.goto('https://example.com');
+app.get('/', (req, res) => {
+  res.send('API rodando 🚀');
+});
 
-  console.log(await page.title());
+app.get('/scrape', async (req, res) => {
+  try {
+    const browser = await puppeteer.launch({
+      executablePath: '/usr/bin/chromium',
+      args: ['--no-sandbox', '--disable-setuid-sandbox']
+    });
 
-  setInterval(() => {}, 1000);
-})();
+    const page = await browser.newPage();
+    await page.goto('https://example.com');
+
+    const title = await page.title();
+
+    await browser.close();
+
+    res.json({ title });
+  } catch (err) {
+    res.status(500).json({ error: err.message });
+  }
+});
+
+// 🔥 IMPORTANTE: porta 3000
+app.listen(3000, () => {
+  console.log('Servidor rodando na porta 3000');
+});
